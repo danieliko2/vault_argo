@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-app
+  labels:
+    app: weather_app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weather_app
+  template:
+    metadata:
+      labels:
+        app: weather_app
+    spec:
+
+      containers:
+      - name: weather-app
+        image: danieliko/kafka_python
+        ports:
+        - containerPort: 8000
+        imagePullPolicy: Always
